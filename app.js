@@ -76,12 +76,6 @@ app.post("/signup",asyncErrorHandler(async (req, res, next) => {
 }))
 
 
-// Start listening on port 3001
-app.listen(3001, () => {
-    console.log('port connected') 
-})
-
-
 // Middleware for handling requests for undefined routes
 app.all('*', (req, res, next) => {
     const err = new CustomError(`Can't find ${req.originalUrl} on the server!`, 404);
@@ -91,3 +85,5 @@ app.all('*', (req, res, next) => {
 // Global error handling middleware
 app.use(globalErrorHandler);
 
+
+module.exports = app
